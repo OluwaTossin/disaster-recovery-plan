@@ -1,3 +1,8 @@
+provider "aws" {
+  alias  = "us-west-2"
+  region = "us-west-2"
+}
+
 resource "aws_db_instance" "recovery_primary" {
   provider                = aws.us-west-2
   identifier              = "recovery-primary-instance"
