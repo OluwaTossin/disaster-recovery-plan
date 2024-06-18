@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "backup_bucket" {
-  bucket = "my-backup-bucket-unique-name-123456"
+  bucket = "my-backup-bucket-unique-name-123456-1"
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "backup_bucket_lifecycle" {
@@ -34,7 +34,7 @@ resource "aws_instance" "app" {
 }
 
 resource "aws_elb" "main" {
-  name               = "my-elb"
+  name               = "my-elb-unique"
   availability_zones = ["us-east-1a", "us-east-1b"]
 
   listener {
@@ -55,7 +55,7 @@ resource "aws_elb" "main" {
   instances = [aws_instance.app.id]
 
   tags = {
-    Name = "my-elb"
+    Name = "my-elb-unique"
   }
 }
 
@@ -81,7 +81,7 @@ resource "aws_route53_record" "failover" {
 }
 
 resource "aws_db_instance" "primary" {
-  identifier              = "primary-instance"
+  identifier              = "primary-instance-unique"
   engine                  = "mysql"
   instance_class          = "db.t3.micro"
   allocated_storage       = 20
@@ -96,7 +96,7 @@ resource "aws_db_instance" "primary" {
 }
 
 resource "aws_db_instance" "replica" {
-  identifier              = "replica-instance"
+  identifier              = "replica-instance-unique"
   engine                  = "mysql"
   instance_class          = "db.t3.micro"
   parameter_group_name    = "default.mysql5.7"
