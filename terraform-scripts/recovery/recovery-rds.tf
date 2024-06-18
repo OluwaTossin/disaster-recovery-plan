@@ -1,10 +1,10 @@
 provider "aws" {
-  alias  = "us-west-2"
-  region = "us-west-2"
+  alias  = "us-east-1"
+  region = "us-east-1"
 }
 
 resource "aws_db_instance" "recovery_primary" {
-  provider                = aws.us-west-2
+  provider                = aws.us-east-1
   identifier              = "recovery-primary-instance"
   engine                  = "mysql"
   instance_class          = "db.t3.micro"
