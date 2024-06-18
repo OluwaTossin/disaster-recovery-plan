@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_db_instance" "recovery_primary" {
   provider                = aws.us-east-1
-  identifier              = "recovery-primary-instance"
+  identifier              = "recovery-primary-instance-unique"
   engine                  = "mysql"
   instance_class          = "db.t3.micro"
   allocated_storage       = 20
